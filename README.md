@@ -6,6 +6,17 @@ income, this extension integrates Spree store installations with
 Fastly's advanced edge-caching technologies. Cache invalidation is
 performed by means of observing models and expiry via surrogate keys.
 
+This extension does the following:
+
+   1. Instruments the customer-facing parts of spree_frontend with
+      correct cache headers
+   1. Observers changes to key Spree models (and relations) for cache invalidation
+
+As a consequence, you can expect to lower HTTP response times
+drastically. Additionally, since the majority of requests are expected
+to short-circuit at edge locations, the carrying capacity of your
+hosting tier is effectively boosted. 
+
 Installation
 ------------
 
