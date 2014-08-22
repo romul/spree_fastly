@@ -6,6 +6,9 @@ income, this extension integrates Spree store installations with
 Fastly's advanced edge-caching technologies. Cache invalidation is
 performed by means of observing models and expiry via surrogate keys.
 
+Integration
+-----------
+
 This extension does the following:
 
    1. Instruments the customer-facing parts of spree_frontend with
@@ -15,7 +18,35 @@ This extension does the following:
 As a consequence, you can expect to lower HTTP response times
 drastically. Additionally, since the majority of requests are expected
 to short-circuit at edge locations, the carrying capacity of your
-hosting tier is effectively boosted. 
+hosting tier is effectively boosted.
+
+Optimized Resources
+-------------------
+
+The following frotnend controllers are optimised with cache-control
+headers:
+
+   * Spree::ContentController
+   * Spree::HomeController
+   * Spree::ProductsController
+   * Spree::TaxonsController
+
+The following models have a direct bearing on the cache freshness and
+are reflected on the frontend when customers navigate the storefront in
+question:
+
+   * Spree::Product
+   * Spree::Variant
+   * Spree::Taxonomy
+   * Spree::Taxon
+
+Special Considerations
+----------------------
+
+Due to template and asset changes upon **deployment** it is wise to
+invalidate the cached views in bulk.
+
+TODO: Expand this section.
 
 Installation
 ------------
