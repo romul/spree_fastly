@@ -1,3 +1,6 @@
+WARNING: Not yet complete! This is a work in progress.
+=====================================================
+
 Spree Fastly
 ===========
 
