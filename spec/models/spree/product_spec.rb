@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Spree::Product do
-  let(:product){  }
   describe "product instance" do
     let(:product) { create(:product) }
     let(:variant) { create(:variant, :product => product) }
