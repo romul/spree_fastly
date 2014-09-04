@@ -3,3 +3,5 @@ module Spree
     Config = Spree::FastlyConfiguration.new
   end
 end
+
+
