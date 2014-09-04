@@ -1,0 +1,22 @@
+<%= render 'spree/admin/shared/configuration_menu' %>
+
+<% content_for :page_title do %>
+  <%= Spree.t("spree_reviews.fastly_settings") %>
+<% end %>
+
+<%= form_tag(admin_fastly_settings_path, :method => :put) do %>
+  <fieldset class="no-border-top">
+    <%- Spree::Fastly::Config.defined_preferences.each do |pref| -%>
+      <div class="field">
+        <label><%= Spree.t("spree_fastly.#{pref}") %></label><br/>
+        <%= text_field("preferences", pref, :value => Spree::Fastly::Config[pref]) %>
+      </div>
+    <%- end -%>
+
+    <div class="form-buttons filter-actions actions" data-hook="buttons">
+      <%= button Spree.t('actions.update'), 'icon-refresh' %>
+      <span class="or"><%= Spree.t(:or) %></span>
+      <%= link_to_with_icon 'icon-remove', Spree.t('actions.cancel'), edit_admin_general_settings_url, :class => 'button' %>
+    </div>
+  </fieldset>
+<% end %>
