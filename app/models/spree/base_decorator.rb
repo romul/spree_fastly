@@ -13,7 +13,12 @@ module Spree
     end
 
     def perform_purges?
-      Rails.env.staging? || Rails.env.production?
+      Spree::Fastly::Config.perform_purges? &&
+      Spree::Fastly::Config.purged_collections.include?(collection_name_sym)
+    end
+
+    def collection_name_sym
+      self.class.name.demodulize.downcase.pluralize.to_sym
     end
   end
 end
