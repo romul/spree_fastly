@@ -18,7 +18,7 @@ module Spree
     end
 
     def collection_name_sym
-      self.class.name.demodulize.downcase.pluralize.to_sym
+      self.class.name.demodulize.tableize.to_sym
     end
   end
 end
