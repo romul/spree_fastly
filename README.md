@@ -26,7 +26,7 @@ hosting tier is effectively boosted.
 Optimized Resources
 -------------------
 
-The following frotnend controllers are optimised with cache-control
+The following frontend controllers are optimised with cache-control
 headers:
 
    * Spree::ContentController
