@@ -78,6 +78,8 @@ RSpec.configure do |config|
     DatabaseCleaner.start
 
     Spree::Fastly::Config[:service_id]= 'dummy-service-id'
+    Spree::Fastly::Config[:api_key]= 'dummy-api-key'
+    Spree::Fastly::Config[:password]= 'password'
   end
 
   # After each spec clean the database.
