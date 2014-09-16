@@ -22,7 +22,9 @@ class Spree::FastlyConfiguration < Spree::Preferences::Configuration
 
   def purged_collections
     Set.new [
-      :products
+      :products,
+      :taxonomies,
+      :taxons
     ]
   end
 

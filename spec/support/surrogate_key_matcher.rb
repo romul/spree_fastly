@@ -6,7 +6,7 @@ RSpec::Matchers.define :have_surrogate_keys do |keys|
 
   # Optional failure messages
   failure_message_for_should do |actual|
-    "expected response headers to be indexed under '#{keys}'"
+    "expected response headers to be indexed under '#{keys}', but only '#{response.headers['Surrogate-Key']}' received"
   end
 
   failure_message_for_should_not do |actual|
@@ -19,3 +19,13 @@ RSpec::Matchers.define :have_surrogate_keys do |keys|
   end
 end
 
+RSpec::Matchers.define :have_no_surrogate_keys do
+  match do |response|
+    response.headers['Surrogate-Key'].nil?
+  end
+
+  # Optional failure messages
+  failure_message_for_should do |actual|
+    "expected no 'Surrogate-Key' in response headers"
+  end
+end
