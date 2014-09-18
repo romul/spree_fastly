@@ -2,6 +2,16 @@ module Spree
   module Api
     ProductsController.class_eval do
 
+      private
+
+      def expires_in(seconds, options = {})
+        if ['index', 'show'].include?(action_name)
+          # stub to save control on Cache-Control header
+        else
+          super
+        end
+      end
+
       def respond_with(*resources, &block)
         if ['index', 'show'].include?(action_name)
           set_cache_control_headers

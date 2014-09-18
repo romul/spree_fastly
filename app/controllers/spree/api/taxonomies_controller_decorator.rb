@@ -23,15 +23,21 @@ module Spree
       def index_surrogate_keys
         custom_keys = @taxonomies.map(&:record_key)
         @taxonomies.each do |taxonomy|
-          custom_keys << taxonomy.root.record_key
-          custom_keys += taxonomy.root.children.map(&:record_key)
+          custom_keys += surrogate_keys_for_taxons_by(taxonomy)
         end
         custom_keys
       end
 
       def show_surrogate_keys
-        custom_keys = [@taxonomy.record_key, @taxonomy.root.record_key]
-        custom_keys += @taxonomy.root.children.map(&:record_key)
+        [@taxonomy.record_key] + surrogate_keys_for_taxons_by(@taxonomy)
+      end
+
+      def surrogate_keys_for_taxons_by(taxonomy)
+        if params[:set] == 'nested'
+          taxonomy.taxons.map(&:record_key)
+        else
+          [taxonomy.root.record_key] + taxonomy.root.children.map(&:record_key)
+        end
       end
     end
   end
