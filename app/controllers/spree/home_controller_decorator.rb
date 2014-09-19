@@ -2,6 +2,8 @@ module Spree
   HomeController.class_eval do
     after_filter :set_fastly_sidechannels
 
+    private
+
     def set_fastly_sidechannels
       if spree_current_user.nil?
         set_cache_control_headers

@@ -3,6 +3,8 @@ module Spree
     TaxonsController.class_eval do
       after_filter :set_fastly_sidechannels, :only => [:products]
 
+      private
+
       def respond_with(*resources, &block)
         if ['index', 'show'].include?(action_name)
           set_cache_control_headers
@@ -14,8 +16,6 @@ module Spree
         end
         super
       end
-
-      private
 
       def set_fastly_sidechannels
         set_cache_control_headers

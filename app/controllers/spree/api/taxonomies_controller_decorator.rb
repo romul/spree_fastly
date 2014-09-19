@@ -2,6 +2,8 @@ module Spree
   module Api
     TaxonomiesController.class_eval do
 
+      private
+
       def respond_with(*resources, &block)
         if ['index', 'show'].include?(action_name)
           set_cache_control_headers
@@ -17,8 +19,6 @@ module Spree
         end
         super
       end
-
-      private
 
       def index_surrogate_keys
         custom_keys = @taxonomies.map(&:record_key)
