@@ -43,8 +43,6 @@ describe Spree::Api::ProductsController do
       expect(response).to have_surrogate_keys('products')
       expect(response).not_to have_surrogate_keys(product.record_key)
       expect(response).to have_surrogate_keys(product2.record_key)
-      expect(response).to have_surrogate_keys("page=2")
-      expect(response).to have_surrogate_keys("per_page=1")
     end
 
 

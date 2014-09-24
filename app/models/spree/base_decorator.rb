@@ -1,7 +1,6 @@
 module Spree
   Base.class_eval do
-    after_create :purge_all
-    after_save :purge
+    after_save :purge, :purge_all
     after_destroy :purge, :purge_all
 
     def purge_all

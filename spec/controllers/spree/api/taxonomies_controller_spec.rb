@@ -37,8 +37,6 @@ describe Spree::Api::TaxonomiesController do
       expect(response).to have_surrogate_keys('taxons')
       expect(response).to have_surrogate_keys(taxonomy2.record_key)
       expect(response).to have_surrogate_keys(taxonomy2.root.record_key)
-      expect(response).to have_surrogate_keys("page=2")
-      expect(response).to have_surrogate_keys("per_page=1")
     end
 
     it "gets a single taxonomy" do
