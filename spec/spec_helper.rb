@@ -30,6 +30,7 @@ require 'spree/testing_support/capybara_ext'
 require 'spree/testing_support/controller_requests'
 require 'spree/testing_support/factories'
 require 'spree/testing_support/url_helpers'
+require 'spree/api/testing_support/helpers'
 
 # Requires factories defined in lib/spree_fastly/factories.rb
 require 'spree_fastly/factories'
@@ -47,6 +48,7 @@ RSpec.configure do |config|
   config.include Spree::TestingSupport::UrlHelpers
   config.include Spree::TestingSupport::ControllerRequests
   config.include Devise::TestHelpers, type: :controller
+  config.include Spree::Api::TestingSupport::Helpers, :type => :controller
 
   # == Mock Framework
   #
@@ -80,6 +82,7 @@ RSpec.configure do |config|
     Spree::Fastly::Config[:service_id]= 'dummy-service-id'
     Spree::Fastly::Config[:api_key]= 'dummy-api-key'
     Spree::Fastly::Config[:password]= 'password'
+    Spree::Api::Config[:requires_authentication] = false
   end
 
   # After each spec clean the database.
