@@ -11,7 +11,6 @@ module Spree
           surrogate_keys = keys_for_collections(:taxonomies, :taxons)
           surrogate_keys += @taxons.map(&:record_key) if @taxons
           surrogate_keys << @taxon.record_key if @taxon
-          surrogate_keys << request.query_string if request.query_string.present?
           set_surrogate_key_header surrogate_keys
         end
         super

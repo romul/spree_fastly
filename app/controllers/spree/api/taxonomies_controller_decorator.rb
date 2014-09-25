@@ -14,7 +14,6 @@ module Spree
           elsif action_name == 'show'
             surrogate_keys += show_surrogate_keys
           end
-          surrogate_keys << request.query_string if request.query_string.present?
           set_surrogate_key_header surrogate_keys
         end
         super
