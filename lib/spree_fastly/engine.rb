@@ -10,8 +10,8 @@ module SpreeFastly
     end
 
     def self.activate
-      Spree::StoreController.include SpreeFastly::ControllerHelpers
-      Spree::Api::BaseController.include SpreeFastly::ControllerHelpers
+      Spree::StoreController.send :include, SpreeFastly::ControllerHelpers
+      Spree::Api::BaseController.send :include, SpreeFastly::ControllerHelpers
       
       Dir.glob(File.join(File.dirname(__FILE__), '../../app/**/*_decorator*.rb')) do |c|
         Rails.configuration.cache_classes ? require(c) : load(c)

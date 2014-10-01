@@ -10,5 +10,9 @@ module SpreeFastly
         clazz.table_key if clazz
       end.compact
     end
+
+    def can_be_cached
+      spree_current_user.nil? && current_order.nil? && flash.notice.blank?
+    end
   end
 end
