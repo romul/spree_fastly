@@ -39,13 +39,6 @@ describe Spree::ProductsController do
       expect(response).to have_no_surrogate_keys
     end
 
-    it "doesn't set cache headers in case enabled search filter" do
-      spree_get :index, :search => {:price_range_any => ["$10.00 - $15.00"]}
-
-      expect(response).not_to be_cacheable
-      expect(response).to have_no_surrogate_keys
-    end
-
   end
 
   describe 'on #show' do

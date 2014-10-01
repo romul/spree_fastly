@@ -12,7 +12,7 @@ module SpreeFastly
     end
 
     def can_be_cached
-      params[:search].blank? && spree_current_user.nil? && current_order.nil? && flash.notice.blank?
+      spree_current_user.nil? && current_order.nil? && flash.notice.blank?
     end
   end
 end
