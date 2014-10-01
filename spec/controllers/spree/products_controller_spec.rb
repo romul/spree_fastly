@@ -71,5 +71,13 @@ describe Spree::ProductsController do
       expect(response).to have_no_surrogate_keys
     end
 
+    it "doesn't set cache headers if there is a guest order" do
+      controller.stub :current_order => create(:order)
+      spree_get :show, :id => product1.slug
+
+      expect(response).not_to be_cacheable
+      expect(response).to have_no_surrogate_keys
+    end
+
   end
 end
