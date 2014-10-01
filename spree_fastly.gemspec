@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_fastly'
-  s.version     = '2.3.1'
+  s.version     = '0.0.2'
   s.summary     = 'Blazing fast edge-caching for Spree Stores'
   s.description = 'An extension aiming to boost usability of Spree stores by means of reducing network (and application) latency drastically.'
   s.required_ruby_version = '>= 1.9.3'
