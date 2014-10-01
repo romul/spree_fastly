@@ -29,14 +29,22 @@ describe Spree::Product do
     end
 
     describe 'when allowed to perform purges' do
-      before { Spree::Fastly::Config.enable_purges! }
+      before do
+        Spree::Fastly::Config.enable_purges!
+        stub_request(:any, /api\.fastly\.com\/service/).
+           to_return(:status => 200, :body => "{}", :headers => {})
+      end
       after { Spree::Fastly::Config.disable_purges! }
 
       describe 'when created' do
         it 'sends a purge all request' do
-          stub_request(:any, /api\.fastly\.com\/service/).
-             to_return(:status => 200, :body => "{}", :headers => {})
           unsaved_product.save
+        end
+      end
+
+      describe 'when saved' do
+        it 'sends a purge request' do
+          product.save
         end
       end
     end
