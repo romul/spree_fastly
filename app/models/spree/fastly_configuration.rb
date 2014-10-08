@@ -9,7 +9,7 @@ class Spree::FastlyConfiguration < Spree::Preferences::Configuration
   preference :service_id, :string
 
   def perform_purges?
-    perform_purges
+    perform_purges && FastlyRails.configuration.authenticatable?
   end
 
   def disable_purges!
