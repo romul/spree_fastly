@@ -24,7 +24,8 @@ class Spree::FastlyConfiguration < Spree::Preferences::Configuration
     Set.new [
       :products,
       :taxonomies,
-      :taxons
+      :taxons,
+      :users
     ]
   end
 
