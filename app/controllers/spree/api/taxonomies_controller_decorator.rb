@@ -8,6 +8,7 @@ module Spree
         if ['index', 'show'].include?(action_name)
           set_cache_control_headers
           surrogate_keys = keys_for_collections(:taxonomies, :taxons)
+          surrogate_keys << @current_api_user.record_key
 
           if action_name == 'index'
             surrogate_keys += index_surrogate_keys

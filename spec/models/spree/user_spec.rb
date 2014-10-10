@@ -1,29 +1,28 @@
 require 'spec_helper'
 
-describe Spree::Product do
-  describe "product instance" do
-    let(:product) { create(:product) }
-    let(:variant) { create(:variant, :product => product) }
-    let(:unsaved_product) { build(:product) }
+describe Spree::User do
+  describe "user instance" do
+    let(:user) { create(:user) }
+    let(:unsaved_user) { build(:user) }
 
     describe 'when saved' do
       it 'invokes #spree_purge callbacks' do
-        expect(product).to receive(:spree_purge)
-        product.save
+        expect(user).to receive(:spree_purge)
+        user.save
       end
     end
 
     describe 'when created' do
       it 'invokes #spree_purge callbacks' do
-        expect(unsaved_product).to receive(:spree_purge)
-        unsaved_product.save
+        expect(unsaved_user).to receive(:spree_purge)
+        unsaved_user.save
       end
     end
 
     describe 'when destroyed' do
       it 'invokes #spree_purge callbacks' do
-        expect(product).to receive(:spree_purge)
-        product.destroy
+        expect(user).to receive(:spree_purge)
+        user.destroy
       end
     end
 
@@ -37,13 +36,13 @@ describe Spree::Product do
 
       describe 'when created' do
         it 'sends a purge all request' do
-          unsaved_product.save
+          unsaved_user.save
         end
       end
 
       describe 'when saved' do
         it 'sends a purge request' do
-          product.save
+          user.save
         end
       end
     end

@@ -32,7 +32,6 @@ describe Spree::Api::ProductsController do
       expect(response).to have_surrogate_keys(product.record_key)
       expect(response).not_to have_surrogate_keys(product2.record_key)
       expect(response).not_to have_surrogate_keys(inactive_product.record_key)
-      expect(response).to have_surrogate_keys("ids")
     end
 
 

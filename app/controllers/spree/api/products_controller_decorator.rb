@@ -18,7 +18,7 @@ module Spree
           surrogate_keys = keys_for_collections(:products)
           surrogate_keys += @products.map(&:record_key) if @products
           surrogate_keys << @product.record_key if @product
-          surrogate_keys << request.query_string if request.query_string.present?
+          surrogate_keys << @current_api_user.record_key
           set_surrogate_key_header surrogate_keys
         end
         super
