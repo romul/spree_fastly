@@ -1,11 +1,8 @@
-WARNING: Not yet complete! This is a work in progress.
-=====================================================
-
 Spree Fastly
 ===========
 
 Built with the wisdom that performant eCommerce stores generate more
-income, this extension integrates Spree store installations with
+revenue, this extension integrates Spree store installations with
 Fastly's advanced edge-caching technologies. Cache invalidation is
 performed by means of observing models and expiry via surrogate keys.
 
@@ -34,14 +31,11 @@ headers:
    * Spree::ProductsController
    * Spree::TaxonsController
 
-The following models have a direct bearing on the cache freshness and
-are reflected on the frontend when customers navigate the storefront in
-question:
+Additionally, the following Spree API resources receive a boost:
 
-   * Spree::Product
-   * Spree::Variant
-   * Spree::Taxonomy
-   * Spree::Taxon
+   * Spree::ProductsController
+   * Spree::TaxonomiesController
+   * Spree::TaxonsController
 
 Special Considerations
 ----------------------
