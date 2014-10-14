@@ -29,4 +29,11 @@ class Spree::FastlyConfiguration < Spree::Preferences::Configuration
     ]
   end
 
+  def purge_all!
+    purged_collections.each do |collection|
+      clazz = "Spree::#{collection.to_s.classify}".safe_constantize
+      clazz.purge_all if clazz
+    end
+  end
+
 end
