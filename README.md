@@ -43,7 +43,13 @@ Special Considerations
 Due to template and asset changes upon **deployment** it is wise to
 invalidate the cached views in bulk.
 
-TODO: Expand this section.
+```
+  bundle exec rake spree_fastly:purge_all
+```
+
+Rails Asset Pipeline's built-in asset digest feature will ensure
+freshness of your CSS and JS assets since these are not tagged with
+surrogate keys. 
 
 Installation
 ------------
