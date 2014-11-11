@@ -67,6 +67,14 @@ bundle
 bundle exec rails g spree_fastly:install
 ```
 
+For debugging ease's sake, you might want to disable Rails' own caching
+mechanism:
+
+```ruby
+# config/environments/production.rb
+config.action_controller.perform_caching = false
+```
+
 Testing
 -------
 
