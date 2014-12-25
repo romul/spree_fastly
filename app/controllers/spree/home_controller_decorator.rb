@@ -1,6 +1,10 @@
 module Spree
   HomeController.class_eval do
-    after_filter :set_fastly_sidechannels, :if => :can_be_cached
+    after_filter :set_fastly_sidechannels, :except => [:csrf_meta_tags], :if => :can_be_cached
+
+    def csrf_meta_tags
+      render :layout => false
+    end
 
     private
 

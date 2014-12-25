@@ -1,0 +1,2 @@
+<!-- replace "erb[loud]:contains('csrf_meta_tags')" -->
+<esi:include src="/csrf_meta_tags.html" />

@@ -3,4 +3,5 @@ Spree::Core::Engine.routes.draw do
   namespace :admin do
     resource :fastly_settings, only: [:edit, :update]
   end
+  get '/csrf_meta_tags' => 'home#csrf_meta_tags'
 end
